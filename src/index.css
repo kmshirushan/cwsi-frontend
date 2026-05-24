@@ -1,0 +1,149 @@
+/* --- CSS Reset & Full Screen Override --- */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: none !important; /* Kills the Vite dark strip */
+  overflow: hidden;
+  background-color: #0f172a; /* Main Dark Background */
+  color-scheme: dark; /* Forces native date picker to dark mode */
+}
+
+/* --- Dashboard Layout --- */
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8fafc;
+}
+
+.map-section {
+  flex: 1 1 65%;
+  position: relative;
+  border-right: 2px solid #1e293b;
+}
+
+.ui-section {
+  flex: 1 1 35%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  background-color: #0f172a;
+}
+
+/* --- Typography & Cards --- */
+h1 {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 10px;
+}
+
+.control-card {
+  background: #1e293b; /* Dark card background */
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.control-card label {
+  font-weight: bold;
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0 0 1rem 0;
+  font-style: italic;
+}
+
+/* --- Inputs & Buttons --- */
+.date-picker {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #0f172a;
+  color: #f8fafc;
+  border: 2px solid #475569;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.date-picker:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-primary, .btn-secondary {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary { background-color: #2563eb; color: white; }
+.btn-primary:hover { background-color: #1d4ed8; transform: translateY(-2px); }
+
+.btn-secondary { background-color: #ef4444; color: white; }
+.btn-secondary:hover { background-color: #b91c1c; transform: translateY(-2px); }
+
+/* --- Output Animations --- */
+.loading-box {
+  padding: 1.5rem;
+  background: rgba(245, 158, 11, 0.1); /* Transparent Orange */
+  border-left: 5px solid #f59e0b;
+  border-radius: 6px;
+  color: #fcd34d;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+
+.result-card {
+  padding: 1.5rem;
+  background: rgba(16, 185, 129, 0.1); /* Transparent Green */
+  border-left: 5px solid #10b981;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes slideIn {
+  0% { transform: translateX(50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* MapLibre Popup fixes for dark mode */
+.maplibregl-popup-content {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-radius: 8px !important;
+  border: 1px solid #334155;
+}
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: #1e293b !important;
+}
