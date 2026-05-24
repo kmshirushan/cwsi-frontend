@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 # --- Database Configuration ---
-DB_URL =os.environ.get("DATABASE_URL", "postgresql://neondb_owner:npg_yXCcwr28Riaz@ep-aged-pond-ao33gsvj-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+DB_URL =os.environ.get("DATABASE_URL", "")
 
 # --- Pydantic Data Validation Schemas ---
 class SpatialArea(BaseModel):
