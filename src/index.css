@@ -147,3 +147,56 @@ h1 {
 .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
   border-top-color: #1e293b !important;
 }
+/* =========================================
+   📱 MOBILE RESPONSIVE LAYOUT (MEDIA QUERIES)
+   ========================================= */
+
+/* 1. Desktop Default Layout */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.map-section {
+  flex: 1 1 65%;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #1e293b;
+}
+
+.ui-section {
+  flex: 1 1 35%;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* 2. Mobile Override (Screens smaller than 800px wide) */
+@media (max-width: 800px) {
+  .dashboard-container {
+    flex-direction: column; /* Stack vertically! */
+    height: 100dvh; /* Use dynamic viewport height for mobile browsers */
+    overflow-y: auto; /* Let the whole page scroll */
+  }
+
+  .map-section {
+    flex: none; /* Turn off flex resizing */
+    height: 50vh; /* Map takes up the top half of the screen */
+    border-right: none;
+    border-bottom: 2px solid #1e293b;
+  }
+
+  .ui-section {
+    flex: none;
+    height: auto; /* UI panel expands to fit content on the bottom */
+    overflow-y: visible;
+  }
+
+  /* Make the popup slightly smaller for phone screens */
+  .maplibregl-popup-content {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

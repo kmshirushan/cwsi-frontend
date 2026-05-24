@@ -78,6 +78,7 @@ export default function App() {
   }, []);
 
   useEffect(() => { loadFields(); }, [loadFields]);
+
   // Auto-fetch history when toggles or the active field changes
   useEffect(() => {
     if (enableHistory && activeFieldId) {
@@ -132,7 +133,6 @@ export default function App() {
         });
         const regData = await regRes.json();
 
-        // Fixed the missing 'const' here!
         const computeRes = await fetch(`${API_BASE}/cwsi/compute`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -188,10 +188,12 @@ export default function App() {
     <div className="dashboard-container">
 
       {/* LEFT SIDE: MAP & CHART */}
-      <div style={{ flex: '1 1 65%', display: 'flex', flexDirection: 'column', borderRight: '2px solid #1e293b' }}>
+      {/* 👇 Applied the new mobile-friendly map-section class! */}
+      <div className="map-section">
 
-        {/* Map Container (Shrinks if chart is active) */}
-        <div style={{ flex: enableHistory && historicalData.length > 0 ? '0 0 55%' : '1', position: 'relative' }}>
+        {/* Map Container */}
+        {/* 👇 Added minHeight: '400px' so the map doesn't disappear on phones */}
+        <div style={{ flex: enableHistory && historicalData.length > 0 ? '0 0 55%' : '1', position: 'relative', minHeight: '400px' }}>
 
           {/* Basemap Toggle Buttons */}
           <div style={{ position: 'absolute', top: 15, left: 15, zIndex: 10, display: 'flex', gap: '5px', background: 'rgba(15, 23, 42, 0.8)', padding: '5px', borderRadius: '8px', border: '1px solid #334155' }}>
